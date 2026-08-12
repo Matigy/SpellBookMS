@@ -18,7 +18,7 @@ namespace SpellbookSystem
                 Console.WriteLine("1. Magdagdag ng Bagong Spell");
                 Console.WriteLine("2. Magtanggal ng Lumang Spell");
                 Console.WriteLine("3. Ipakita ang Lahat ng Spell");
-                Console.WriteLine("4. Maghasa ng Spell (Train / Attack)");
+                Console.WriteLine("4. Maghasa ng Spell");
                 Console.WriteLine("5. Lumabas");
                 Console.Write("Pumili ng opsyon (1-5): ");
 
@@ -181,7 +181,7 @@ namespace SpellbookSystem
                     }
 
                     // I-display ang resulta ng turn
-                    Console.WriteLine($"\n💥 [ATTACK] Ginamit mo ang '{selectedSpell.GetSpellName()}'!");
+                    Console.WriteLine($"\n [ATTACK] Ginamit mo ang '{selectedSpell.GetSpellName()}'!");
                     Console.WriteLine($"   - Nabawasan ka ng {spCost} Spell Points.");
                     Console.WriteLine($"   - Nabawasan ka ng {manaCost} Mana Points.");
                     Console.WriteLine($"   - Nagdulot ka ng {damageDealt} DAMAGE sa dummy!");
