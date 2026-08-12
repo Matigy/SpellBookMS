@@ -98,5 +98,16 @@
             }
             return false;
         }
+        public bool getRankbyID(string rank)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (spells[i].GetRank() == rank)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

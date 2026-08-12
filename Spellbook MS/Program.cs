@@ -54,7 +54,7 @@ namespace SpellbookSystem
         // Helper method para sa pagkuha ng input mula sa user
         static void AddNewSpellMenu(Spellbook spellbook)
         {
-            // Paglikha ng bagong Spell Object at pagdagdag sa Spellbook
+            // Paglikha ng mga Spell Object for testing ng training functionality
             Spell newSpell = new Spell(1, "Tubig Hangin", "Malakas na tubig sa hangin", 5, 10, "Hangin", "Bagito", "nignaH gibuT");
             spellbook.AddSpell(newSpell);
             Spell newSpell2 = new Spell(2, "Lupang Hangin", "Malakas na tubig sa hangin", 7, 20, "Hangin", "Bagito", "nignaH gnapuL");
@@ -141,8 +141,8 @@ namespace SpellbookSystem
                         {
                         int id = ReadInteger("Ipasok ang mga spell id na hahasain: ");
                             if (spellbook.IsIdExists(id))
-                            { 
-                               
+                            {
+                                spellbook.getRankbyID("Bagito");
                             
                             }
                             Console.WriteLine("[ERROR] Ang Spell ID na ito ay hindi umiiral.");
