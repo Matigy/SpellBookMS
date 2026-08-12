@@ -1,0 +1,15 @@
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\SpellBookMS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\SpellBookMS.AssemblyInfoInputs.cache
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\SpellBookMS.AssemblyInfo.cs
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\SpellBookMS.csproj.CoreCompileInputs.cache
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\SpellBookMS.sourcelink.json
+C:\Users\ais\Downloads\SpellBookMS\bin\Debug\net10.0\SpellBookMS.exe
+C:\Users\ais\Downloads\SpellBookMS\bin\Debug\net10.0\SpellBookMS.deps.json
+C:\Users\ais\Downloads\SpellBookMS\bin\Debug\net10.0\SpellBookMS.runtimeconfig.json
+C:\Users\ais\Downloads\SpellBookMS\bin\Debug\net10.0\SpellBookMS.dll
+C:\Users\ais\Downloads\SpellBookMS\bin\Debug\net10.0\SpellBookMS.pdb
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\SpellBookMS.dll
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\refint\SpellBookMS.dll
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\SpellBookMS.pdb
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\SpellBookMS.genruntimeconfig.cache
+C:\Users\ais\Downloads\SpellBookMS\obj\Debug\net10.0\ref\SpellBookMS.dll
