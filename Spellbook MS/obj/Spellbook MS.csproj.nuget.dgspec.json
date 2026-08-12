@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\source\\repos\\Spellbook MS\\Spellbook MS.csproj": {}
+    "C:\\Users\\Admin\\Downloads\\PL Lab\\SpellBookMS\\Spellbook MS\\Spellbook MS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\source\\repos\\Spellbook MS\\Spellbook MS.csproj": {
+    "C:\\Users\\Admin\\Downloads\\PL Lab\\SpellBookMS\\Spellbook MS\\Spellbook MS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Spellbook MS\\Spellbook MS.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Downloads\\PL Lab\\SpellBookMS\\Spellbook MS\\Spellbook MS.csproj",
         "projectName": "Spellbook MS",
-        "projectPath": "C:\\Users\\Admin\\source\\repos\\Spellbook MS\\Spellbook MS.csproj",
+        "projectPath": "C:\\Users\\Admin\\Downloads\\PL Lab\\SpellBookMS\\Spellbook MS\\Spellbook MS.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\source\\repos\\Spellbook MS\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Downloads\\PL Lab\\SpellBookMS\\Spellbook MS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

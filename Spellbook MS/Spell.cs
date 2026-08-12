@@ -6,32 +6,31 @@
         // Private fields
         private int spellId;
         private string spellName;
+        private string reversedName;
         private string description;
-        private int minDamage;
-        private int maxDamage;
+        private int Damage;
         private int manaCost;
         private string affinity;
         private string rank;
 
         // Constructor
-        public Spell(int id, string name, string desc, int minDmg, int maxDmg, int mana, string aff, string rnk)
+        public Spell(int id, string name, string desc, int Dmg, int mana, string aff, string rnk, string reversedName)
         {
             this.spellId = id;
             this.spellName = name;
             this.description = desc;
-            this.minDamage = minDmg;
-            this.maxDamage = maxDmg;
+            this.Damage = Dmg;
             this.manaCost = mana;
             this.affinity = aff;
             this.rank = rnk;
+            this.reversedName = reversedName;
         }
 
         // Getters para sa mga attributes
         public int GetSpellId() => spellId;
         public string GetSpellName() => spellName;
         public string GetDescription() => description;
-        public int GetMinDamage() => minDamage;
-        public int GetMaxDamage() => maxDamage;
+        public int GetDamage() => Damage;
         public int GetManaCost() => manaCost;
         public string GetAffinity() => affinity;
         public string GetRank() => rank;
@@ -42,10 +41,11 @@
             Console.WriteLine($"--------------------------------------------------");
             Console.WriteLine($"ID ng Spell    : {spellId}");
             Console.WriteLine($"Pangalan       : {spellName}");
+            Console.WriteLine($"Nalangap       : {reversedName}");
             Console.WriteLine($"Paglalarawan   : {description}");
-            Console.WriteLine($"Damage Range   : {minDamage} - {maxDamage}");
-            Console.WriteLine($"Mana Cost      : {manaCost}");
-            Console.WriteLine($"Affinity       : {affinity}");
+            Console.WriteLine($"Damage Range   : {Damage}");
+            Console.WriteLine($"Mana Cost      : {manaCost}"); 
+            Console.WriteLine($"Affinity       : {affinity}"); 
             Console.WriteLine($"Rank           : {rank}");
             Console.WriteLine($"--------------------------------------------------");
         }
