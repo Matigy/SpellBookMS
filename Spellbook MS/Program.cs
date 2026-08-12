@@ -2,8 +2,27 @@
 
 namespace SpellbookSystem
 {
+    internal class NewBaseType
+    {
+
+        // Validation Method para sa Integer Inputs
+        static int ReadInteger(string prompt)
+        {
+            int value;
+            while (true)
+            {
+                Console.Write(prompt);
+                if (int.TryParse(Console.ReadLine(), out value) && value >= 0)
+                {
+                    return value;
+                }
+                Console.WriteLine("[ERROR] Maling input! Mangyaring magpasok ng positibong numero.");
+            }
+        }
+    }
+
     // Main Program
-    class Program
+    class Program : NewBaseType
     {
         static void Main(string[] args)
         {
@@ -82,7 +101,7 @@ namespace SpellbookSystem
             // string desc = Console.ReadLine();
 
             // // 4. Damage Range (Validadong range kung saan ang min ay dapat 5-10 at max ay mas mataas o pantay sa min)
-            // int Dmg = ReadValidRange("Ipasok ang Range Damage (5 hanggang 10): ", 5, 10);
+            // int Dmg = ReadInteger("Ipasok ang Range Damage (5 hanggang 10): ");
 
             // // 5. Mana Cost
             // int mana = ReadInteger("Ipasok ang Mana Cost: ");
@@ -111,111 +130,124 @@ namespace SpellbookSystem
             spellbook.RemoveSpell(id);
         }
 
-        static void Train(Spellbook spellbook)
+       static void Train(Spellbook spellbook)
         {
-
-            int spellPt = 10;
+            // Fixed values per session
+            int spellPt = 50; 
             int manaPt = 500;
-            int totalDamage;
-            int mostDamage;
-            int spellCount;
+            
+            // Statistics trackers
+            int totalDamage = 0;
+            int mostDamage = 0;
+            int spellCount = 0;
 
-            Console.WriteLine("\n--- MAGHASA NG SPELL ---");
-            Console.WriteLine($"Spell Points   : {spellPt}");
-            Console.WriteLine($"Mana Points   : {manaPt}");
             bool training = true;
 
-            while (training || manaPt > 0)
+            Console.WriteLine("\n=== SIMULA NG TRAINING SESSION ===");
+
+            while (training && manaPt > 0)
             {
-                Console.WriteLine("1. Magdagdag ng Spell");
-                Console.WriteLine("2. Atakihin ang dummy");
-                Console.WriteLine("3. Lumabas");
-                Console.Write("Pumili ng opsyon (1-3): ");
+                Console.WriteLine("\n--------------------------------------------------");
+                Console.WriteLine($"[STATUS] Spell Points: {spellPt} | Mana Points: {manaPt}");
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("1. Atakihin ang Dummy (Pumili ng Spell)");
+                Console.WriteLine("2. Tapusin ang Training (Lumabas)");
+                Console.Write("Pumili ng opsyon (1-2): ");
 
                 string choice = Console.ReadLine();
 
-                switch (choice)
+                if (choice == "1")
                 {
-                    case "1":
-                        if (spellPt <= 0)
-                        {
-                        int id = ReadInteger("Ipasok ang mga spell id na hahasain: ");
-                            if (spellbook.IsIdExists(id))
-                            {
-                                spellbook.getRankbyID("Bagito");
-                            
-                            }
-                            Console.WriteLine("[ERROR] Ang Spell ID na ito ay hindi umiiral.");
-                            return;
-                        }
-                        Console.WriteLine("[ERROR] Ang Spell Points mo ay ubos na.");
-                        break;
-                    case "2":
-                        
-                        break;
+                    int id = ReadInteger("Ipasok ang Spell ID na gagamitin sa pag-atake: ");
+                    Spell selectedSpell = spellbook.GetSpell(id);
+
+                    if (selectedSpell == null)
+                    {
+                        Console.WriteLine("[ERROR] Ang Spell ID na ito ay hindi umiiral.");
+                        continue;
+                    }
+
+                    // Tukuyin ang deduction sa Spell Points batay sa Rank
+                    int spCost = 0;
+                    string rank = selectedSpell.GetRank();
+                    if (rank == "Bagito") spCost = 5;
+                    else if (rank == "Sakslang") spCost = 10;
+                    else if (rank == "Beterano") spCost = 15;
+
+                    // I-check kung sapat ang Spell Points
+                    if (spellPt < spCost)
+                    {
+                        Console.WriteLine($"\n[ERROR] Kulang ang iyong Spell Points! (Kailangan: {spCost}, Meron: {spellPt})");
+                        continue;
+                    }
+
+                    // I-check kung sapat ang Mana Points
+                    int manaCost = selectedSpell.GetManaCost();
+                    if (manaPt < manaCost)
+                    {
+                        Console.WriteLine($"\n[ERROR] Kulang ang iyong Mana! (Kailangan: {manaCost}, Meron: {manaPt})");
+                        continue;
+                    }
+
+                    // === ISAGAWA ANG PAG-ATAKE ===
+                    spellPt -= spCost;
+                    manaPt -= manaCost;
+                    if (manaPt < 0) manaPt = 0; // Para hindi maging negative ang display ng mana
+
+                    int damageDealt = selectedSpell.GetDamage();
                     
-                    case "3":
-                        training = false;
-                        Console.WriteLine("\nSalamat sa paggamit ng Spellbook Management System. Paalam!");
-                        break;
-                    default:
-                        Console.WriteLine("\n[ERROR] Maling opsyon! Mangyaring pumili mula 1 hanggang 3.");
-                        break;
+                    // I-update ang statistics
+                    spellCount++;
+                    totalDamage += damageDealt;
+                    if (damageDealt > mostDamage)
+                    {
+                        mostDamage = damageDealt;
+                    }
+
+                    // I-display ang resulta ng turn
+                    Console.WriteLine($"\n [ATTACK] Ginamit mo ang '{selectedSpell.GetSpellName()}'!");
+                    Console.WriteLine($"   - Nabawasan ka ng {spCost} Spell Points.");
+                    Console.WriteLine($"   - Nabawasan ka ng {manaCost} Mana Points.");
+                    Console.WriteLine($"   - Nagdulot ka ng {damageDealt} DAMAGE sa dummy!");
                 }
-                
-                
-
-
+                else if (choice == "2")
+                {
+                    training = false; // Lalabas na sa loop
+                }
+                else
+                {
+                    Console.WriteLine("\n[ERROR] Maling opsyon! Pumili lamang ng 1 o 2.");
+                }
             }
 
+            // === TRAINING SUMMARY (Ipakikita kapag naubos ang mana o piniling lumabas) ===
+            Console.WriteLine("\n==================================================");
+            Console.WriteLine("               TAPOS NA ANG TRAINING");
+            Console.WriteLine("==================================================");
+            
+            if (manaPt <= 0)
+            {
+                Console.WriteLine("[INFO] Naubos na ang iyong Mana Points!\n");
+            }
 
-
+            Console.WriteLine($"Kabuuang Spells na Nagamit : {spellCount}");
+            Console.WriteLine($"Kabuuang Damage na Nagawa  : {totalDamage}");
+            Console.WriteLine($"Pinakamalakas na Atake     : {mostDamage}");
+            Console.WriteLine("==================================================");
+            Console.WriteLine("Bumabalik sa pangunahing menu...");
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Validation Method para sa Integer Inputs
-        static int ReadInteger(string prompt)
+        // Helper method para makuha ang buong Spell object gamit ang ID
+        public Spell GetSpell(int id)
         {
-            int value;
-            while (true)
+            for (int i = 0; i < count; i++)
             {
-                Console.Write(prompt);
-                if (int.TryParse(Console.ReadLine(), out value) && value >= 0)
+                if (spells[i].GetSpellId() == id)
                 {
-                    return value;
+                    return spells[i];
                 }
-                Console.WriteLine("[ERROR] Maling input! Mangyaring magpasok ng positibong numero.");
             }
-        }
-
-        // Validation Method para sa Damage Range (5-10)
-        static int ReadValidRange(string prompt, int min, int max)
-        {
-            int value;
-            while (true)
-            {
-                Console.Write(prompt);
-                if (int.TryParse(Console.ReadLine(), out value) && value >= min && value <= max)
-                {
-                    return value;
-                }
-                Console.WriteLine($"[ERROR] Ang numero ay dapat nasa pagitan ng {min} at {max}.");
-            }
+            return null; // Ibinabalik ang null kung hindi nahanap
         }
 
         // Validation Method para sa Predefined Options (Affinity & Rank)
