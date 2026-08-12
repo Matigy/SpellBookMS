@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Spellbook MS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75e410bd4b5a56ccdfd861272063bf89c982904b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba45ddf9dbc12aa73e2cc77cefc91546aaa259f7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Spellbook MS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Spellbook MS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

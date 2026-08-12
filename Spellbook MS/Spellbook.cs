@@ -109,5 +109,18 @@
             }
             return false;
         }
+
+        // Helper method para makuha ang buong Spell object gamit ang ID
+        public Spell GetSpell(int id)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (spells[i].GetSpellId() == id)
+                {
+                    return spells[i];
+                }
+            }
+            return null; // Ibinabalik ang null kung hindi nahanap
+        }
     }
 }
