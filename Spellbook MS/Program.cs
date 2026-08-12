@@ -54,14 +54,16 @@ namespace SpellbookSystem
         // Helper method para sa pagkuha ng input mula sa user
         static void AddNewSpellMenu(Spellbook spellbook)
         {
-             // Paglikha ng bagong Spell Object at pagdagdag sa Spellbook
+            // Paglikha ng bagong Spell Object at pagdagdag sa Spellbook
             Spell newSpell = new Spell(1, "Tubig Hangin", "Malakas na tubig sa hangin", 5, 10, "Hangin", "Bagito", "nignaH gibuT");
             spellbook.AddSpell(newSpell);
             Spell newSpell2 = new Spell(2, "Lupang Hangin", "Malakas na tubig sa hangin", 7, 20, "Hangin", "Bagito", "nignaH gnapuL");
             spellbook.AddSpell(newSpell2);
             Spell newSpell3 = new Spell(3, "Hangin Apoy", "Malakas na tubig sa hangin", 10, 30, "Hangin", "Bagito", "yopA nignaH");
             spellbook.AddSpell(newSpell3);
-            Console.WriteLine("\n--- MAGDAGDAG NG BAGONG SPELL ---");
+            
+
+            // Console.WriteLine("\n--- MAGDAGDAG NG BAGONG SPELL ---");
 
             // // 1. Spell ID
             // int id = ReadInteger("Ipasok ang Spell ID: ");
@@ -114,6 +116,9 @@ namespace SpellbookSystem
 
             int spellPt = 10;
             int manaPt = 500;
+            int totalDamage;
+            int mostDamage;
+            int spellCount;
 
             Console.WriteLine("\n--- MAGHASA NG SPELL ---");
             Console.WriteLine($"Spell Points   : {spellPt}");
@@ -122,18 +127,43 @@ namespace SpellbookSystem
 
             while (training || manaPt > 0)
             {
-                int id = ReadInteger("Ipasok ang mga spell id na hahasain: ");
-            if (spellbook.IsIdExists(id))
-            {
-                Console.WriteLine("[ERROR] Ang Spell ID na ito ay umiiral na! Subukang muli sa ibang ID.");
-                return;
-            }
+                Console.WriteLine("1. Magdagdag ng Spell");
+                Console.WriteLine("2. Atakihin ang dummy");
+                Console.WriteLine("3. Lumabas");
+                Console.Write("Pumili ng opsyon (1-3): ");
 
+                string choice = Console.ReadLine();
 
-
-
-
-
+                switch (choice)
+                {
+                    case "1":
+                        if (spellPt <= 0)
+                        {
+                        int id = ReadInteger("Ipasok ang mga spell id na hahasain: ");
+                            if (spellbook.IsIdExists(id))
+                            { 
+                               
+                            
+                            }
+                            Console.WriteLine("[ERROR] Ang Spell ID na ito ay hindi umiiral.");
+                            return;
+                        }
+                        Console.WriteLine("[ERROR] Ang Spell Points mo ay ubos na.");
+                        break;
+                    case "2":
+                        
+                        break;
+                    
+                    case "3":
+                        training = false;
+                        Console.WriteLine("\nSalamat sa paggamit ng Spellbook Management System. Paalam!");
+                        break;
+                    default:
+                        Console.WriteLine("\n[ERROR] Maling opsyon! Mangyaring pumili mula 1 hanggang 3.");
+                        break;
+                }
+                
+                
 
 
             }
